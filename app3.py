@@ -16,4 +16,9 @@ header = {'Content-Type': 'application/json'}
 
 payload = {'phone_number':'+18052174796'}
 
-response = requests.post(url=url, auth=auth, headers=header, json=payload)
+try:
+    response = requests.post(url=url, auth=auth, headers=header, json=payload)
+    print(response.json)
+
+except requests.exceptions.RequestException as e:
+    print(e)
