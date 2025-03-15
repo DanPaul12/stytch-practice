@@ -10,7 +10,7 @@ STYTCH_SECRET = os.getenv("STYTCH_SECRET")
 # Stytch API endpoint for sending magic links
 STYTCH_MAGIC_LINK_URL = "https://test.stytch.com/v1/magic_links/email/send"
 
-if not STYTCH_PROJECT_ID or STYTCH_SECRET:
+if not STYTCH_PROJECT_ID or not STYTCH_SECRET:
     print('missing auth')
 
 auth = (STYTCH_PROJECT_ID, STYTCH_SECRET)
@@ -33,3 +33,5 @@ try:
 
 except requests.exceptions.RequestException as e:
     print(e)
+
+    

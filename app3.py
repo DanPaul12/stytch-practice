@@ -3,22 +3,19 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-project = os.getenv('STYTCH_PROJECT_ID')
-secret = os.getenv('STYTCH_SECRET')
-
-url = 'https://test.stytch.com/v1/otps/sms/send'
-
-auth = (project, secret)
-if not auth:
-    print('missing auth')
+PROJECT_ID = os.getenv('STYTCH_PROJECT_ID')
+SECRET = os.getenv('STYTCH_SECRET')
+STYTCH_URL = 'https://test.stytch.com/v1/otps/sms/send'
 
 header = {'Content-Type': 'application/json'}
 
 payload = {'phone_number':'+18052174796'}
 
-try:
-    response = requests.post(url=url, auth=auth, headers=header, json=payload)
-    print(response.json)
+auth = (PROJECT_ID, SECRET)
 
+try:
+    response = requests.post(url=STYTCH_URL, auth=auth, headers=header, json=payload )
+    print(response.text)
 except requests.exceptions.RequestException as e:
     print(e)
+
