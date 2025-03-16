@@ -20,7 +20,8 @@ def authenticate():
     auth = (project_id, secret)
     if not project_id or not secret:
         print('auth missing')
-    payload = {'token': token}
+    payload = {'token': token,
+               'session_duration_minutes':50}
 
     try:
         response = requests.post(url=authenticate_url, headers=headers, auth=auth, json=payload)
