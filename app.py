@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 PROJECT_ID = os.getenv('STYTCH_PROJECT_ID')
-SECRET = os.getenv('SYTCH_SECRET')
+SECRET = os.getenv('STYTCH_SECRET')
+if not PROJECT_ID or not SECRET:
+    print('missing auth')
 
 STYTCH_API_URL = 'https://test.stytch.com/v1/magic_links/email/send'
 
@@ -24,3 +26,4 @@ try:
         print(response.text)
 except requests.exceptions.RequestException as e:
     print(f'Unexpected error: {e}')
+    print(response.text)
